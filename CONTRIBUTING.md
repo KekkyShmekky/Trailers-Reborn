@@ -115,4 +115,24 @@ return {
 		print("You're disconnecting trailer ("..ventity.connection.ent.."), from truck ("..ventity.ent..")")
 	end
 }
+
+## Adding Third-Party Vehicle Support
+
+This method will allow you to add additional output positions and types with relative ease to other vehicles without having to bug the developers, if you did not make the vehicles you wish to be supported.
+
+1. Create a Lua file in `lua/autorun/server`. Name it something you can refer back to easily. 
+2. Copy and paste the raw contents of this file (https://github.com/SupinePandora43/Trailers-Reborn/blob/master/lua/autorun/server/simfphys_base_vehicles_TR.lua) into it, and delete all the entries under defaultvehicles. 
+Ensure you have the WS addon installed on the server, so that the entries for the default vehicles will still be there.
+3. Rename all instances of defaultvehicles in the above file to something such as "thirdpartyvehicles" to prevent conflicting with the WS addon.
+4. In this example, we're going to be adding trailer support to the Unarmed Technical from Arctic's Vehicle Extension. 
+```
+["models/avx/technical_unarmed.mdl"] = {
+        outputPos = Vector(0, -125, 20),
+        outputType = "ballsocket"
+    },
+```
+
+In this case, we are using its model path, which can be found in your server/client console if logs are enabled. 
+From here, it's just trial and error to determine the best vector to use for that particular model. Spawn the vehicle again to see your changes.
+
 ```
